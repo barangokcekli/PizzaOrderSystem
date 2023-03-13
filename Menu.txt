@@ -1,0 +1,12 @@
+Lütfen Bir Pizza Tabaný Seçiniz:
+1: Klasik
+2: Margarita
+3: TürkPizza
+4: Sade Pizza
+Topping Seçiniz:
+11: Zeytin
+12: Mantar
+13: Keçi Peyniri
+14: Et
+15: Soðan
+16: Mýsýr
