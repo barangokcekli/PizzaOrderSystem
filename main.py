@@ -3,17 +3,17 @@ from datetime import datetime
 
 with open("Menu.txt", "w") as menu_file:
     menu_file.write("Lütfen Bir Pizza Tabanı Seçiniz:\n"
-    "1: Klasik\n"
-    "2: Margarita\n"
-    "3: TürkPizza\n"
-    "4: Sade Pizza\n"
+    "1: Klasik - 20TL\n"
+    "2: Margarita - 25TL\n"
+    "3: TürkPizza - 30TL\n"
+    "4: Sade Pizza - 15TL\n"
     "Topping Seçiniz:\n"
-    "11: Zeytin\n"
-    "12: Mantar\n"
-    "13: Keçi Peyniri\n"
-    "14: Et\n"
-    "15: Soğan\n"
-    "16: Mısır\n"
+    "11: Zeytin - 1TL\n"
+    "12: Mantar - 2TL\n"
+    "13: Keçi Peyniri - 3TL\n"
+    "14: Et - 4TL\n"
+    "15: Soğan - 5TL\n"
+    "16: Mısır - 6TL\n"
     )
 
 class Pizza:
