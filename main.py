@@ -150,11 +150,11 @@ class OrdersDatabase:
     def __init__(self):
         self.filename = 'Orders_Database.csv'
 
-    def write_to_database(self, customer_id, customer_name, pizza_description, sauce_description, total_cost, card_number, card_security_code):
+    def write_to_database(self, customer_id, customer_name, pizza_description, topping_description, total_cost, card_number, card_security_code):
         with open(self.filename, mode='a', newline='') as file:
             writer = csv.writer(file)
             current_time = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            writer.writerow([customer_id, customer_name, pizza_description, sauce_description, total_cost, card_number, card_security_code, current_time])
+            writer.writerow([customer_id, customer_name, pizza_description, topping_description, total_cost, card_number, card_security_code, current_time])
 
 
 def main():
@@ -163,21 +163,21 @@ def main():
         menu = f.read()
         print(menu)
 
-    # Kullanıcıdan pizza ve sos seçimlerini alın
+    # Kullanıcıdan pizza ve topping seçimlerini alın
     while True:
         try:
             pizza_choice = input('Lütfen pizza seçiminizi yapın (1-4): ')
             if pizza_choice not in ["1", "2", "3", "4"]:
                 raise ValueError("Lütfen 1-4 arasında değerler girin.")
             
-            sauce_choice = input('Lütfen sos seçiminizi yapın (11-16): ')
-            if sauce_choice not in ['11', '12', '13', '14', '15', '16']:
+            topping_choice = input('Lütfen topping seçiminizi yapın (11-16): ')
+            if topping_choice not in ['11', '12', '13', '14', '15', '16']:
                 raise ValueError("Lütfen 11-16 arasında değerler girin")
             break
         except ValueError as error:
             print(error)
 
-    # Pizza ve sos sınıflarını oluşturun
+    # Pizza ve topping sınıflarını oluşturun
     try:
         pizza = {
             '1': KlasikPizza(),
@@ -190,20 +190,20 @@ def main():
         pizza = None
 
     try:
-        sauce = {
+        topping = {
             '11': Zeytin(pizza),
             '12': Mantar(pizza),
             '13': KeciPeyniri(pizza),
             '14': Et(pizza),
             '15': Sogan(pizza),
             '16': Misir(pizza)
-    }[sauce_choice]
+    }[topping_choice]
     except KeyError:
-        print('Hatalı sos seçimi!')
-        sauce = None
+        print('Hatalı topping seçimi!')
+        topping = None
 
     # Toplam tutarı hesaplayın
-    total_cost = sauce.get_cost()
+    total_cost = topping.get_cost()
 
 
     # Kullanıcı bilgilerini alın
@@ -214,7 +214,7 @@ def main():
 
     # Siparişi veritabanına yazdırın
     orders_database = OrdersDatabase()
-    orders_database.write_to_database(customer_id, customer_name, pizza.description, sauce.description, total_cost, card_number, card_security_code)
+    orders_database.write_to_database(customer_id, customer_name, pizza.description, topping.description, total_cost, card_number, card_security_code)
 
 if __name__ == "__main__":
     main()
