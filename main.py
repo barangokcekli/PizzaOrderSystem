@@ -215,6 +215,7 @@ def main():
     # Siparişi veritabanına yazdırın
     orders_database = OrdersDatabase()
     orders_database.write_to_database(customer_id, customer_name, pizza.description, topping.description, total_cost, card_number, card_security_code)
+    print(f"Siparişiniz başarıyla oluşturuldu. Toplam tutar: {total_cost}")
 
 if __name__ == "__main__":
     main()
