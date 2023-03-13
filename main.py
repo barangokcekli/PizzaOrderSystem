@@ -213,11 +213,6 @@ def main():
     card_security_code = input('Lütfen kredi kartı güvenlik kodunuzu girin: ')
 
     # Siparişi veritabanına yazdırın
-   
-
-    """with open("siparisler.csv", "a", newline="") as file:
-        writer = csv.writer(file)
-        writer.writerow(siparis)"""
     orders_database = OrdersDatabase()
     orders_database.write_to_database(customer_id, customer_name, pizza.description, sauce.description, total_cost, card_number, card_security_code)
 
